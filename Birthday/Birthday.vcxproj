@@ -18,6 +18,27 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Data.h" />
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="Getime.h" />
+    <ClInclude Include="header.h" />
+    <ClInclude Include="Initialise.h" />
+    <ClInclude Include="IOfile.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="Snake.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="ToD_array.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Initialise.cpp" />
+    <ClCompile Include="IOfile.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="ToD_array.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{815AAEB9-B9AB-4AE4-BA69-FBC61AF183A8}</ProjectGuid>
     <RootNamespace>Birthday</RootNamespace>
@@ -109,8 +130,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
