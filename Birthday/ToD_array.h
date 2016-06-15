@@ -22,7 +22,7 @@ public:
 		{ above,right_above,right,right_low,low,left_low,left,left_above };*/
 
 	index position(index r, index col) { return colume*r + col - 1; }
-	
+	index getmax() { return max; }
 private:
 	index colume;
 	index row;

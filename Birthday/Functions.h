@@ -1,5 +1,6 @@
 #pragma once
 #include"Data.h"
+#include"Snake.h"
 #include"IOfile.h"
 #include"Time.h"
 #include"header.h"
@@ -21,6 +22,7 @@ public:
 	int maen()const;
 
 private:
+	Snake snake;
 	Data data;
 	IOfile io;
 	Time time;

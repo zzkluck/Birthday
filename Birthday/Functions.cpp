@@ -114,8 +114,8 @@ void Functions::SelectMode() {
 	//};
 	int mode;
 	SelectModeIntroduce();
-	while (cout << "Now your should select the mode" << endl,cin >> mode) {
-		getchar();
+	while (cout << "Now your can select the mode(Use 5 to show help information." << endl,
+		cin >> mode) {
 		switch (mode)
 		{
 		case 1:
@@ -126,6 +126,12 @@ void Functions::SelectMode() {
 			break;
 		case 3:
 			InsertMode();
+			break;
+		case 4:
+			snake.PlayTheSnake();
+			break;
+		case 5:
+			SelectModeIntroduce();
 			break;
 		default:
 			break;
@@ -138,6 +144,7 @@ inline void SelectModeIntroduce() {
 	cout << "Use mode 1 to show the mainmenu again;" << endl;
 	cout << "Use mode 2 to show all data saved" << endl;
 	cout << "Use mode 3 to add new data" << endl;
+	cout << "Use mode 4 to play 一个弱智一样的贪吃蛇小游戏,贪吃蛇还在开发阶段,很容易爆炸." << endl;
 	cout << "Enter 'q' to quit" << endl;
 	cout << "If you are the first time to use, you now should select mode 3 " << endl;
 }
