@@ -86,12 +86,12 @@ void Functions::SaveInfo() {
 	if (Changed) {
 		data.print(io.ofs);
 		io.close();
-		if (remove(DATAFILE)) {
+		if (remove(DATAFILE.c_str())) {
 			cerr << "ERROR 4 : REMOVE file error.";
 			getchar();
 			exit(4);
 		}
-		if (rename(TEMPFILE, DATAFILE)) {
+		if (rename(TEMPFILE.c_str(), DATAFILE.c_str())) {
 			cerr << "ERROR 5 : RENAME file error.";
 			getchar();
 			exit(5);
@@ -99,7 +99,7 @@ void Functions::SaveInfo() {
 	}
 	else {
 		io.close();
-		if (remove(TEMPFILE)) {
+		if (remove(TEMPFILE.c_str())) {
 			cerr << "ERROR 4 : REMOVE file error.";
 			getchar();
 			exit(4);
@@ -144,7 +144,7 @@ inline void SelectModeIntroduce() {
 	cout << "Use mode 1 to show the mainmenu again;" << endl;
 	cout << "Use mode 2 to show all data saved" << endl;
 	cout << "Use mode 3 to add new data" << endl;
-	cout << "Use mode 4 to play 一个弱智一样的贪吃蛇小游戏,贪吃蛇还在开发阶段,很容易爆炸." << endl;
+	cout << "Use mode 4 to play 一个不那么弱智的贪吃蛇小游戏,现在不太容易爆炸了." << endl;
 	cout << "Enter 'q' to quit" << endl;
 	cout << "If you are the first time to use, you now should select mode 3 " << endl;
 }

@@ -1,7 +1,26 @@
 #include "Initialise.h"
 
+string DATAFILE ;
+string TEMPFILE ;
+string DIRECTORY ;
+string USERFILE ;
+
+#define USERNAMEMAX 100
+void Get_name()
+{
+	DWORD max = USERNAMEMAX;
+	char name[USERNAMEMAX];
+	GetUserName(name, &max);
+	string username = name;
+	DATAFILE = "C:\\Users\\" + username + "\\Documents\\Birthday\\data.txt";
+	TEMPFILE = "C:\\Users\\" + username + "\\Documents\\Birthday\\temp.txt";
+	DIRECTORY = "C:\\Users\\" + username + "\\Documents\\Birthday";
+	USERFILE = "C:\\Users\\" + username + "\\Documents\\Birthday\\userinfomation.dat";
+}
+
 Initialise::Initialise()
 {
+	Get_name();
 	if (first_use()) {
 		CreatDateFile();
 		EnterNamePrompt();
@@ -34,7 +53,7 @@ inline void EnterNamePrompt() {
 }
 
 void CreatDateFile() {
-	if (!CreateDirectory(DIRECTORY, NULL)) {
+	if (!CreateDirectory(DIRECTORY.c_str(), NULL)) {
 		cerr << "ERROR 6: create dircetory error.";
 		getchar();
 		exit(6);
@@ -43,3 +62,4 @@ void CreatDateFile() {
 	ofs << "FIRSTUSE" << endl;
 	ofs.close();
 }
+

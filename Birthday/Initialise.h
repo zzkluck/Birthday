@@ -13,6 +13,7 @@ public:
 	Initialise();
 };
 
+void Get_name();
 void CreatUserName();
 inline void EnterNamePrompt();
 bool first_use();

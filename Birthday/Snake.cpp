@@ -1,18 +1,26 @@
 #include "Snake.h"
+#include<string>
+
+bool win = 0;
 
 void Snake::DrawMap() {
+	string stars(WIDTH+2,'_');
+	cout << stars << endl;
 	for (int i = 0; i < HEIGHT; i++) {
+		cout << '|';
 		for (int j = 0; j < WIDTH; j++) {
 			cout << map[i*WIDTH + j];
 		}
-		cout << '\n';
+		cout << "|\n";
 	}
+	cout << stars << endl;
 }
 
 void Snake::DrawSnakeAndFood() {
 	for (auto beg = snakebody.begin(); beg != snakebody.end(); beg++) {
 		map[*beg] = SNAKEBODY;
 	}
+	cout << food << endl;
 	map[food] = FOOD;
 }
 
@@ -72,13 +80,21 @@ bool Snake::ExamineNext(position next) {
 }
 
 void Snake::RandFood() {
-	position shit = rand() % (sizeof(map) - sizeof(snakebody));
+	unsigned residue = map.size() - snakebody.size();
+	if (residue == 0) {
+		win = 1;
+		return;
+	}
+	position shit = rand() % residue + 1;
 	auto beg = map.begin();
 	while(shit != 0) {
 		if (*beg++ == 0)
 			shit -= 1;
 	}
-	food = beg - map.begin();
+	food = beg - map.begin() - 1;
+	if (food == -1) {
+		system("pause");
+	}
 }
 
 bool Snake::EndMenu(){
@@ -102,15 +118,17 @@ bool Snake::EndMenu(){
 }
 
 void Snake::Initilise() {
+	srand(time(NULL));
 	map = { 0 };
-	snakebody = { 113 };
-	food = rand() % 225;
+	snakebody = { HEIGHT*WIDTH / 2 + 1 };
+	food = rand() % (HEIGHT*WIDTH);
+	win = 0;
 }
 
 
 void Snake::PlayTheSnake() {
-	srand(time(NULL));
-	while (1) {
+	Initilise();
+	while (!win) {
 		DrawSnakeAndFood();
 		DrawMap();
 		position next = GetNext();
@@ -124,6 +142,17 @@ void Snake::PlayTheSnake() {
 				break;
 		}
 		Move(next);
+		if (win) {
+			cout << "You are win!" << endl;
+			if (EndMenu()) {
+				Initilise();
+				system("cls");
+				continue;
+			}
+			else
+				break;
+		}
 		system("cls");
 	}
+	
 }

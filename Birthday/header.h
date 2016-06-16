@@ -1,6 +1,9 @@
 #pragma once
+#include<string>
+using std::string;
 typedef unsigned int date;
-#define DATAFILE "C:\\Users\\admin\\Documents\\Birthday\\data.txt"
-#define TEMPFILE "C:\\Users\\admin\\Documents\\Birthday\\temp.txt"
-#define DIRECTORY "C:\\Users\\admin\\Documents\\Birthday"
-#define USERFILE "C:\\Users\\admin\\Documents\\Birthday\\userinfomation.dat"
+
+extern string DATAFILE;
+extern string TEMPFILE;
+extern string DIRECTORY;
+extern string USERFILE;

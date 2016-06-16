@@ -10,8 +10,8 @@
 
 using namespace std;
 typedef unsigned int position;
-#define WIDTH 15
-#define HEIGHT 15
+#define WIDTH 8
+#define HEIGHT 8
 
 #define SNAKEBODY 56
 #define FOOD 67
@@ -32,7 +32,7 @@ public:
 private:
 	ToD_array index = ToD_array(WIDTH, HEIGHT);
 	array<char, WIDTH*HEIGHT> map = { 0 };
-	deque<position> snakebody = { 113 };
-	position food = rand() % 225;
+	deque<position> snakebody = { HEIGHT*WIDTH / 2 + 1 };
+	position food = rand() % HEIGHT*WIDTH;
 };
 
