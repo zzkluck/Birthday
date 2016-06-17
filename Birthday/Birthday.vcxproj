@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="Data.h" />
     <ClInclude Include="Functions.h" />
-    <ClInclude Include="Getime.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="Initialise.h" />
     <ClInclude Include="IOfile.h" />
@@ -111,6 +110,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

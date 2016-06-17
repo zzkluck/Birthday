@@ -16,12 +16,15 @@ public:
 	bool operator<(const Person shit2) {
 		return (*this).birthday <= shit2.birthday;
 	}
+	bool operator==(const Person shit2) {
+		return name == shit2.name&&birthday == shit2.birthday;
+	}
 	istream& read(istream& is) {
 		is >> name >> birthday;
 		return is;
 	}
 	ostream& print(ostream &os)const {
-		os << name << " " << birthday << endl;
+		os << name << " " << birthday<<" ";
 		return os;
 	}
 	

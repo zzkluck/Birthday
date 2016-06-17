@@ -13,15 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\一般不会再去修改的类">
+      <UniqueIdentifier>{7283aa80-a2c1-49fb-a96d-2eb1cb9d8656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\不修改的">
+      <UniqueIdentifier>{df9ac98b-13c7-411e-b8ee-ab6658f797cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Data.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Functions.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Getime.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="header.h">
@@ -30,20 +30,23 @@
     <ClInclude Include="Initialise.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="IOfile.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Person.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Snake.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="Data.h">
+      <Filter>头文件\一般不会再去修改的类</Filter>
+    </ClInclude>
+    <ClInclude Include="IOfile.h">
+      <Filter>头文件\一般不会再去修改的类</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>头文件\一般不会再去修改的类</Filter>
     </ClInclude>
     <ClInclude Include="ToD_array.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\一般不会再去修改的类</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>头文件\一般不会再去修改的类</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -53,20 +56,20 @@
     <ClCompile Include="Initialise.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="IOfile.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Snake.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="IOfile.cpp">
+      <Filter>源文件\不修改的</Filter>
+    </ClCompile>
     <ClCompile Include="Time.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\不修改的</Filter>
     </ClCompile>
     <ClCompile Include="ToD_array.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\不修改的</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

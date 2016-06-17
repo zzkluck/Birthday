@@ -24,12 +24,17 @@ public:
 		std::sort(shit.begin(), shit.end(), 
 			[](const Person bitch1, const Person bitch2){return bitch1.birthday < bitch2.birthday; });
 	}
-	void insert(Person bitch) {
+	bool insert(Person bitch) {
+		//元素重复时返回1
 		auto dst = find_if(shit.begin(), shit.end(),
-			[bitch](Person bitch2) {return bitch2.birthday > bitch.birthday; });
+			[bitch](Person bitch2) {return bitch2.birthday >= bitch.birthday; });
+		if (*dst == bitch) {
+			return 1;
+		}
 		shit.insert(dst, bitch);
-
+		return 0;
 	}
+//private:
 	vector<Person> shit;
 };
 

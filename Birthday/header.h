@@ -7,3 +7,5 @@ extern string DATAFILE;
 extern string TEMPFILE;
 extern string DIRECTORY;
 extern string USERFILE;
+extern string SnakeFile;
+extern string UpdataLog;

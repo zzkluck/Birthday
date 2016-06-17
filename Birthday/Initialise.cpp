@@ -4,6 +4,8 @@ string DATAFILE ;
 string TEMPFILE ;
 string DIRECTORY ;
 string USERFILE ;
+string SnakeFile;
+string UpdataLog;
 
 #define USERNAMEMAX 100
 void Get_name()
@@ -16,6 +18,8 @@ void Get_name()
 	TEMPFILE = "C:\\Users\\" + username + "\\Documents\\Birthday\\temp.txt";
 	DIRECTORY = "C:\\Users\\" + username + "\\Documents\\Birthday";
 	USERFILE = "C:\\Users\\" + username + "\\Documents\\Birthday\\userinfomation.dat";
+	SnakeFile = "C:\\Users\\" + username + "\\Documents\\Birthday\\snakeinfomation.dat";
+	UpdataLog = "C:\\Users\\" + username + "\\Documents\\Birthday\\更新日志.txt";
 }
 
 Initialise::Initialise()

@@ -19,6 +19,7 @@ public:
 	void ShowPersonList();
 	void InsertMode();
 	void SaveInfo();
+	void PrintUpdataLog();
 	int maen()const;
 
 private:

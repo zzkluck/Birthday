@@ -69,9 +69,21 @@ void Functions::InsertMode() {
 	InsertModeIntroduce();
 	Person bitch;
 	while (bitch.read(cin)) {
-		data.insert(bitch);
+		if (data.insert(bitch)) {
+			cout << "信息\"";
+			bitch.print(cout);
+			cout << "\"已重复,未能输入" << endl;
+		};
 	}
 	Changed = 1;
+}
+
+void Functions::PrintUpdataLog() {
+	ifstream ifs(UpdataLog);
+	string line;
+	while (getline(ifs, line)) {
+		cout << line << endl;
+	}
 }
 
 inline void InsertModeIntroduce() {
@@ -114,7 +126,7 @@ void Functions::SelectMode() {
 	//};
 	int mode;
 	SelectModeIntroduce();
-	while (cout << "Now your can select the mode(Use 5 to show help information." << endl,
+	while (cout << "\nNow your can select the mode(Use 5 to show help information.\n" << endl,
 		cin >> mode) {
 		switch (mode)
 		{
@@ -133,6 +145,8 @@ void Functions::SelectMode() {
 		case 5:
 			SelectModeIntroduce();
 			break;
+		case 6:
+			PrintUpdataLog();
 		default:
 			break;
 		}
@@ -145,6 +159,7 @@ inline void SelectModeIntroduce() {
 	cout << "Use mode 2 to show all data saved" << endl;
 	cout << "Use mode 3 to add new data" << endl;
 	cout << "Use mode 4 to play 一个不那么弱智的贪吃蛇小游戏,现在不太容易爆炸了." << endl;
+	cout << "Use mode 6 to show UpdataLog" << endl;
 	cout << "Enter 'q' to quit" << endl;
 	cout << "If you are the first time to use, you now should select mode 3 " << endl;
 }
