@@ -5,7 +5,7 @@
 
 class ToD_array {
 public:
-	typedef const int index;
+	typedef const unsigned int index;
 
 	ToD_array() = default;
 	ToD_array(index r, index col);
@@ -23,10 +23,16 @@ public:
 
 	index position(index r, index col) { return colume*r + col - 1; }
 	index getmax() { return max; }
+	void resize(index col, index r) {
+		colume = col;
+		row = r;
+		max = colume*row;
+
+	}
 private:
-	index colume;
-	index row;
-	index max;
+	unsigned colume;
+	unsigned row;
+	unsigned max;
 };
 
 #endif // !TOD_ARRAY_H

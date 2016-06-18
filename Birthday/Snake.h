@@ -1,7 +1,7 @@
 #pragma once
 #include"ToD_array.h"
 #include"header.h"
-#include<array>
+#include<vector>
 #include<deque>
 #include<iostream>
 #include<cstdlib>
@@ -27,8 +27,7 @@ typedef struct {
 }Skin;
 
 typedef struct tagSNAKEINFOHEADER {
-	//在下一个版本中,我们会实现过关系统.
-	//unsigned level;
+	unsigned level;
 	Skin skin;
 	unsigned coins;
 }SNAKEINFOHEADER;
@@ -51,9 +50,10 @@ private:
 	void LoadInfo();
 	void SaveInfo();
 	void Shop();
+	void WhileWin();
 private:
-	ToD_array index = ToD_array(WIDTH, HEIGHT);
-	array<char, WIDTH*HEIGHT> map;
+	ToD_array index ;
+	vector<char> map;
 	deque<position> snakebody ;
 	position food;
 	SNAKEINFOHEADER info;

@@ -2,16 +2,21 @@
 #include<string>
 
 bool win = 0;
+bool SelectionYN();
+
+
 
 void Snake::Initilise() {
+	LoadInfo();
 	srand(time(NULL));
+	map.resize(info.level*info.level);
+	index.resize(info.level, info.level);
 	for (auto beg = map.begin(); beg != map.end(); beg++) {
 		*beg = ' ';
 	}
-	snakebody = { HEIGHT*WIDTH / 2 + 1,HEIGHT*WIDTH / 2 + WIDTH + 1 };
-	food = rand() % (HEIGHT*WIDTH);
+	snakebody = { info.level*info.level / 2 + 1,info.level*info.level / 2 + info.level + 1 };
+	food = rand() % (info.level*info.level);
 	win = 0;
-	LoadInfo();
 	system("cls");
 }
 
@@ -32,9 +37,7 @@ void Snake::PlayTheSnake() {
 		}
 		Move(next);
 		if (win) {
-			cout << "You are win!" << endl;
-			cout << "在下一个版本中,我们会实现过关系统.敬请期待." << endl;
-			Shop();
+			WhileWin();
 			if (EndMenu()) {
 				Initilise();
 				continue;
@@ -48,13 +51,13 @@ void Snake::PlayTheSnake() {
 }
 
 void Snake::DrawMap() {
-	string upper(WIDTH + 2, info.skin.upper_boundary);
-	string lower(WIDTH + 2, info.skin.lower_boundary);;
+	string upper(info.level + 2, info.skin.upper_boundary);
+	string lower(info.level + 2, info.skin.lower_boundary);;
 	cout << upper << endl;
-	for (int i = 0; i < HEIGHT; i++) {
+	for (int i = 0; i < info.level; i++) {
 		cout << info.skin.side_boundary;
-		for (int j = 0; j < WIDTH; j++) {
-			cout << map[i*WIDTH + j];
+		for (int j = 0; j < info.level; j++) {
+			cout << map[i*info.level + j];
 		}
 		cout << info.skin.side_boundary << '\n';
 	}
@@ -143,13 +146,28 @@ void Snake::RandFood() {
 	}
 }
 void Snake::Shop() {
-	cout << "you have a skin?";
-	info.skin = { 2,1,3,'_','|','-',' ' };
+	cout << "Do you want a skin?" << endl;
+	cout << "You now have ";
+	cout << info.coins;
+	cout << " coins" << endl;
+	if (SelectionYN()) {
+		if (info.coins < 9) {
+			cout << "NOT ENOUGH MONEY.";
+		}
+		else {
+			info.coins -= 9;
+			info.skin = { 2,1,3,'_','|','-',' ' };
+		}
+	}
 	SaveInfo();
 }
 
 bool Snake::EndMenu(){
 	cout << "Do you want to continue?(Y/N)" << endl;
+	return SelectionYN();
+}
+
+bool SelectionYN() {
 	while (1) {
 		switch (getchar())
 		{
@@ -172,15 +190,32 @@ void Snake::LoadInfo() {
 	if (!ifs) {
 		ifs.close();
 		ofstream ofs(SnakeFile);
+		info.level = 3;
 		info.skin = { 56,56,67,' ',' ',' ',' ' };
 		info.coins = 0;
 		ofs.write((char*)&info, sizeof(info));
+		ofs.close();
 		return;
 	}
 	ifs.read((char*)&info, sizeof(info));
+	ifs.close();
 	return;
 }
 void Snake::SaveInfo() {
 	ofstream ofs(SnakeFile);
+	if (!ofs) {
+		cerr << "Error 3: Output file open error: "  << endl;
+		getchar();
+		exit(3);
+	}
 	ofs.write((char*)&info, sizeof(info));
+	ofs.close();
+}
+
+void Snake::WhileWin() {
+	cout << "You are win!" << endl;
+	info.coins += info.level*info.level;
+	info.level += 1;
+	SaveInfo();
+	Shop();
 }
