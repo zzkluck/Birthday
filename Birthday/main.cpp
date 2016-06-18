@@ -2,7 +2,7 @@
 #include"Initialise.h"
 
 int main() {
-	cout << "Version 0.04" << endl;
+	cout << "Version 0.05" << endl;
 	Initialise a;
 	Functions function;
 	function.ShowMainMenu();
